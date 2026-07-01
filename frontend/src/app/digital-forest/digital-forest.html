@@ -1,0 +1,22 @@
+<div class="df-page">
+  <div class="sub-nav">
+    <button class="nav-btn" type="button" (click)="goBack()" aria-label="Back">
+      <img src="assets/images/back-button.svg" alt="" />
+    </button>
+    <button class="nav-btn" type="button" routerLink="/home" aria-label="Home">
+      <img src="assets/images/home-button.svg" alt="" />
+    </button>
+  </div>
+
+  <div class="page-body">
+    <div class="title-row df-title-row">
+      <img class="df-header-icon" src="assets/images/digital-forest-icon.svg" alt="" />
+      <div class="df-title-block">
+        <h1 class="page-name">Digital Forest</h1>
+        <p class="page-subtitle">Grow trees together as a team and make a real impact.</p>
+      </div>
+    </div>
+
+    <app-digital-forest-scene [teams]="displayTeams" />
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="login-page">
+  <!-- ── Page Body ── -->
+  <div class="page-body">
+
+    <!-- Back Button -->
+    <button class="nav-btn back-btn" aria-label="Go back" (click)="goBack()">
+      <img src="/assets/images/back-button.svg" alt="Back" />
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <div class="page-title">
+        <h1 class="title-main">Access your account</h1>
+        <p class="title-sub">Keep up with theTorch community</p>
+      </div>
+
+      <form class="login-form" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+
+        <div class="form-field">
+          <label class="field-label" for="studentMail">Student Mail</label>
+          <input
+            id="studentMail"
+            class="field-input"
+            type="email"
+            placeholder="Enter your student mail"
+            name="studentMail"
+            ngModel
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="password">Password</label>
+          <input
+            id="password"
+            class="field-input"
+            type="password"
+            placeholder="Enter your password"
+            name="password"
+            ngModel
+            required
+          />
+        </div>
+
+        @if (errorMessage) {
+          <p class="form-error">{{ errorMessage }}</p>
+        }
+
+        <button type="submit" class="login-btn" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Logging in…' : 'Log In' }}
+        </button>
+
+        <p class="register-link">
+          You don't have an account yet?
+          <a class="register-anchor" routerLink="/register">Register</a>
+        </p>
+
+      </form>
+
+    </main>
+
+    <!-- Home Button -->
+    <button class="nav-btn home-btn" aria-label="Go home" routerLink="/home">
+      <img src="/assets/images/home-button.svg" alt="Home" />
+    </button>
+
+  </div>
+
+</div>

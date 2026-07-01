@@ -1,0 +1,38 @@
+<article
+  class="df-tree-card"
+  [class.df-tree-card--active]="variant === 'active'"
+  [class.df-tree-card--side]="variant === 'side'"
+>
+  <div class="df-tree-card-frame" aria-hidden="true"></div>
+
+  <div class="df-tree-card-tree-slot">
+    <div
+      class="df-tree-card-image-box"
+      [style.--tree-slot-width]="treeDisplay.slotWidthPercent + '%'"
+      [style.--tree-aspect-w]="treeDisplay.aspectWidth"
+      [style.--tree-aspect-h]="treeDisplay.aspectHeight"
+    >
+      <img
+        class="df-tree-card-image"
+        [src]="treeImageSrc"
+        alt=""
+        draggable="false"
+      />
+    </div>
+  </div>
+
+  <div class="df-tree-card-info">
+    <div class="df-tree-card-info-panel" aria-hidden="true"></div>
+
+    <p class="df-tree-card-label">Digital Forest</p>
+    <p class="df-tree-card-team">{{ teamName }}</p>
+    <p class="df-tree-card-points">{{ points }} Points</p>
+
+    <hr class="df-tree-card-divider" />
+
+    <p class="df-tree-card-progress">
+      Tree puzzle progress:
+      <strong class="df-tree-card-progress-value">{{ puzzleProgress }}</strong>%
+    </p>
+  </div>
+</article>

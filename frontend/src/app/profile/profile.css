@@ -1,0 +1,541 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:host { display: block; }
+
+.page-wrapper {
+  --page-pad: 22px;
+  --content-inset: 80px;
+  --content-max: 1200px;
+
+  min-height: 100vh;
+  background: #F2F2F2;
+  font-family: Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── Sub-nav (matches leaderboard) ── */
+.sub-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--page-pad) 0;
+}
+
+.sub-nav-right { display: flex; gap: 10px; }
+
+.nav-btn {
+  width: 46px;
+  height: 46px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.nav-btn img { width: 46px; height: 46px; display: block; }
+
+.page-body {
+  flex: 1;
+  padding: 0 var(--content-inset) 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.title-row {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0 0;
+  margin-bottom: 14px;
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.page-name {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1;
+  color: #000;
+}
+
+.page-subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  color: #585858;
+  margin-top: 4px;
+}
+
+/* ── Main 2-column grid (compact, capped like Figma ~449+800) ── */
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  width: 100%;
+  max-width: var(--content-max);
+  --card-gap: 14px;
+  --row-top-h: 140px;
+  --stats-h: 158px;
+  --achievements-h: 148px;
+  --row-bottom-h: calc(var(--stats-h) + var(--card-gap) + var(--achievements-h));
+}
+
+.card {
+  background: #F2F2F2;
+  border: 1px solid #8D8D8D;
+  border-radius: 18px;
+}
+
+/* ── Left column ── */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.account-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  height: var(--row-top-h);
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 100px;
+  border: 1px solid #8D8D8D;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.account-name {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000;
+}
+
+.account-meta {
+  font-size: 14px;
+  line-height: 24px;
+  color: #585858;
+}
+
+/* Stats card */
+.stats-card {
+  padding: 18px 22px 14px;
+  height: var(--stats-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stats-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stats-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-block-right {
+  align-items: center;
+  text-align: center;
+}
+
+.stats-label {
+  font-size: 14px;
+  line-height: 24px;
+  color: #000;
+}
+
+.stats-big {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.1;
+  color: #000;
+}
+
+.stats-unit {
+  font-size: 16px;
+}
+
+.progress-track {
+  width: 151px;
+  height: 8px;
+  background: #B9B9B9;
+  border: 1px solid #8D8D8D;
+  border-radius: 50px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 6px;
+  background: #0F6CB1;
+  border-radius: 50px;
+  margin-top: 1px;
+}
+
+.stats-team {
+  font-size: 12px;
+  color: #000;
+  margin-top: 6px;
+}
+
+.stats-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stats-meta {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  line-height: 22px;
+  color: #000;
+}
+
+.stats-meta-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.stats-meta strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.status-active {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #00993D;
+  border: 1px solid #C7C7C7;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+/* Achievements */
+.achievements-card {
+  padding: 12px 20px 14px;
+  height: var(--achievements-h);
+}
+
+.achievements-card .section-title {
+  margin-bottom: 6px;
+}
+
+.achievements-list {
+  display: flex;
+  gap: 18px;
+}
+
+.achievements-list img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.logout-btn {
+  width: 130px;
+  height: 40px;
+  background: #0F6DB1;
+  border: 1px solid #8D8D8D;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.logout-btn:hover {
+  background: #0d5a94;
+}
+
+/* ── Right column ── */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  width: 100%;
+}
+
+.score-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: var(--row-top-h);
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.score-label {
+  font-size: 16px;
+  line-height: 1.2;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.score-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-number {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: #000;
+}
+
+.score-unit {
+  font-size: 14px;
+  color: #000;
+  margin-top: 6px;
+}
+
+/* Progress card */
+.progress-card {
+  padding: 16px 20px 14px;
+  height: var(--row-bottom-h);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.chart-area {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-height: 170px;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 2.06;
+  color: #000;
+  text-align: center;
+  width: 21px;
+  padding-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.chart-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+}
+
+.chart-plot {
+  flex: 1;
+  position: relative;
+  min-height: 120px;
+}
+
+.chart-grid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.grid-line {
+  border-top: 1px dashed rgba(141, 141, 141, 0.4);
+  width: 100%;
+}
+
+.grid-line-solid {
+  border-top: 2px solid #8D8D8D;
+}
+
+.chart-bars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 36px;
+  gap: 4px;
+  z-index: 1;
+}
+
+.bar-group {
+  flex: 1;
+  max-width: 32px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bar-stack {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bar-value {
+  font-size: 12px;
+  line-height: 2.06;
+  color: #000;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+.bar {
+  width: 32px;
+  background: #0F6CB1;
+  border-radius: 6px 6px 0 0;
+  min-height: 4px;
+  flex-shrink: 0;
+}
+
+.chart-x-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 36px 0;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.chart-x-labels span {
+  flex: 1;
+  max-width: 32px;
+  font-size: 12px;
+  line-height: 2.06;
+  color: #000;
+  text-align: center;
+}
+
+.distance-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F2F2F2;
+  border: 1px solid #8D8D8D;
+  border-radius: 14px;
+  padding: 4px 18px;
+  height: 64px;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.bike-icon {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.distance-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.distance-text strong {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.distance-text span {
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 4px;
+}
+
+.distance-value {
+  font-weight: 700;
+  font-size: 24px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.distance-unit {
+  font-size: 16px;
+}
+
+@media (max-width: 1100px) {
+  .page-wrapper {
+    --content-inset: var(--page-pad);
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .account-card,
+  .stats-card,
+  .achievements-card,
+  .score-card {
+    height: auto;
+    min-height: 160px;
+  }
+}

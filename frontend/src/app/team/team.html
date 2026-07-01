@@ -1,0 +1,78 @@
+<div class="page-wrapper">
+  <div class="sub-nav">
+    <button class="nav-btn" type="button" (click)="goBack()" aria-label="Back">
+      <img src="assets/images/back-button.svg" alt="Back" />
+    </button>
+    <div class="sub-nav-right">
+      <button class="nav-btn" type="button" routerLink="/profile" aria-label="Profile">
+        <img src="assets/images/profile-button.svg" alt="Profile" />
+      </button>
+      <button class="nav-btn" type="button" routerLink="/home" aria-label="Home">
+        <img src="assets/images/home-button.svg" alt="Home" />
+      </button>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="title-row">
+      <div class="team-title">
+        <span class="page-name">{{ teamName }}</span>
+        <span class="page-subtitle">{{ teamRankLabel }}</span>
+      </div>
+      <div class="team-id-badge">Team ID: {{ teamBadgeId }}</div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card card-members">
+        <h2 class="section-title">Team Members</h2>
+        <div class="members-table">
+          @for (member of teamMembers; track member.name; let i = $index) {
+            <div class="member-row">
+              <span class="member-rank">{{ i + 1 }}</span>
+              <span class="member-name">{{ member.name }}</span>
+              <span class="member-points">{{ member.contributedPoints }} Points</span>
+            </div>
+          } @empty {
+            @for (member of fallbackMembers; track member.name; let i = $index) {
+              <div class="member-row">
+                <span class="member-rank">{{ i + 1 }}</span>
+                <span class="member-name">{{ member.name }}</span>
+                <span class="member-points">{{ member.points }} Points</span>
+              </div>
+            }
+          }
+        </div>
+        <a class="view-all-link" routerLink="/individuals">View All Members</a>
+      </div>
+
+      <div class="card card-points">
+        <h2 class="section-title">Team Points</h2>
+        <div class="points-display">
+          <span class="score-number">{{ teamPointsDisplay }}</span>
+          <span class="score-unit">pts</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" [style.width.%]="progressPercent"></div>
+        </div>
+      </div>
+
+      <a class="card card-challenge" routerLink="/puzzle-tree">
+        <img src="assets/images/icon-puzzle.svg" alt="Puzzle" class="challenge-icon" />
+        <div class="challenge-content">
+          <div class="challenge-title">Puzzle Tree</div>
+          <div class="challenge-desc">Complete the puzzle and help plant an actual tree in Vienna!</div>
+        </div>
+        <img src="assets/images/icon-arrow.svg" alt="Go" class="arrow-icon" />
+      </a>
+
+      <a class="card card-challenge" routerLink="/digital-forest" [queryParams]="{ forest: '1' }">
+        <img src="assets/images/icon-forest.svg" alt="Forest" class="challenge-icon" />
+        <div class="challenge-content">
+          <div class="challenge-title">Digital Forest</div>
+          <div class="challenge-desc">Grow our forest with every km we ride.</div>
+        </div>
+        <img src="assets/images/icon-arrow.svg" alt="Go" class="arrow-icon" />
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,166 @@
+<div class="home-page">
+  <div
+    class="home-bg"
+    style="background-image: url('assets/images/home-background.png')"
+    aria-hidden="true"
+  ></div>
+
+  <div class="page-body">
+    <div class="home-layout">
+      <section class="league-card card">
+        <h1 class="league-title">TU Cycling League</h1>
+
+        <div class="league-panel">
+          <div class="tab-bar" role="tablist" aria-label="Home sections">
+            <button
+              type="button"
+              class="tab-btn"
+              role="tab"
+              [class.tab-btn--active]="activeTab === 'forest'"
+              [attr.aria-selected]="activeTab === 'forest'"
+              (click)="setTab('forest')"
+            >
+              Digital Forest
+            </button>
+            <button
+              type="button"
+              class="tab-btn"
+              role="tab"
+              [class.tab-btn--active]="activeTab === 'leaderboard'"
+              [attr.aria-selected]="activeTab === 'leaderboard'"
+              (click)="setTab('leaderboard')"
+            >
+              Leaderboard
+            </button>
+          </div>
+
+          <div class="panel-body" [class.panel-body--forest]="activeTab === 'forest'">
+            @if (activeTab === 'forest') {
+            <app-digital-forest-scene [embedded]="true" [teams]="displayTeams" />
+            } @else {
+            <div class="leaderboard-panel" aria-label="Team leaderboard preview">
+              <h2 class="section-title">Top Teams (This Week)</h2>
+              @for (team of leaderboardTeams; track team.name; let i = $index) {
+              <div class="lb-row" [class.lb-row--mine]="isMyTeam(team.name)">
+                <span class="lb-rank">{{ i + 1 }}</span>
+                <span class="lb-team" [class.muted]="!isMyTeam(team.name)">{{ team.name }}</span>
+                <span class="lb-pts">{{ team.points }} pts</span>
+              </div>
+              }
+            </div>
+            }
+          </div>
+        </div>
+
+        <a class="panel-cta card" [routerLink]="ctaRoute">
+          @if (activeTab === 'forest') {
+          View Full <span class="panel-cta-accent">Digital Forest</span>
+          } @else {
+          View Full Leaderboard
+          }
+        </a>
+      </section>
+
+      <aside class="side-stack">
+        <button
+          type="button"
+          class="brand-card card"
+          aria-label="Learn about Cycle, Earn, Plant"
+          [attr.aria-expanded]="torchOverlayOpen"
+          (click)="openTorchOverlay()"
+        >
+          <h2 class="brand-title">theTorch</h2>
+          <p class="brand-tagline">
+            <span class="brand-word brand-word--cycle">Cycle</span>.
+            <span class="brand-word brand-word--earn">Earn</span>.
+            <span class="brand-word brand-word--plant">Plant</span>.
+          </p>
+          <div class="brand-icons" aria-hidden="true">
+            <img src="assets/images/home-icon-cycle.svg" alt="" />
+            <img src="assets/images/home-icon-earn.svg" alt="" />
+            <img src="assets/images/home-icon-plant.svg" alt="" />
+          </div>
+        </button>
+
+        <section class="weather-card card">
+          <img class="weather-sun" src="assets/images/weather-sun-big.svg" alt="" />
+          <div class="weather-copy">
+            <p class="weather-title">Vienna Air Quality</p>
+            <p class="weather-subtitle">No rain for today.</p>
+            <p class="weather-detail">Sunny - <span class="weather-aqi">AQI 32</span></p>
+          </div>
+        </section>
+
+        <button
+          type="button"
+          class="light-card card"
+          aria-label="Learn about the Light Info Box"
+          [attr.aria-expanded]="lightOverlayOpen"
+          (click)="openLightOverlay()"
+        >
+          <div class="light-card-header">
+            <img class="light-icon" src="assets/images/home-light-icon.svg" alt="" />
+            <h3 class="light-title">Light Info Box</h3>
+          </div>
+          <div class="light-card-body">
+            <img
+              class="light-tree"
+              src="assets/images/home-light-info-tree.png"
+              alt=""
+              draggable="false"
+            />
+          </div>
+        </button>
+      </aside>
+    </div>
+
+    <nav class="btn-row home-btn-row" aria-label="Quick navigation">
+      <a class="btn-primary" routerLink="/team">My Team</a>
+      <a class="btn-primary" routerLink="/profile">My Profile</a>
+    </nav>
+  </div>
+
+  @if (torchOverlayOpen) {
+  <div
+    class="home-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-label="theTorch concept"
+    (click)="closeTorchOverlay()"
+  >
+    <div class="torch-overlay-panel" (click)="$event.stopPropagation()">
+      <img
+        class="torch-overlay-image"
+        src="assets/images/home-torch-overlay.png"
+        alt="theTorch concept: Cycle by riding your bike, Earn points through events, and Plant real trees in Vienna when digital trees fully grow."
+      />
+    </div>
+  </div>
+  }
+
+  @if (lightOverlayOpen) {
+  <div
+    class="home-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Light Info Box"
+    (click)="closeLightOverlay()"
+  >
+    <div class="light-overlay-panel" (click)="$event.stopPropagation()">
+      <img
+        class="light-overlay-image"
+        src="assets/images/home-light-overlay-image.png"
+        alt=""
+      />
+      <p class="light-overlay-copy">
+        <strong>The light</strong> shows how active the TU cycling community was yesterday.<br /><br />
+        The idea is to “<strong>keep</strong> <strong class="light-accent-torch">theTorch</strong><strong> alive</strong>”: the more students
+        cycle and register their rides, the stronger the Torch visually burns.<br />
+        <strong class="light-accent-red">Red</strong> shows above-average cycling activity,
+        <strong class="light-accent-orange">orange</strong> shows average activity, and
+        <strong class="light-accent-blue">blue</strong> shows below-average activity.
+      </p>
+    </div>
+  </div>
+  }
+</div>

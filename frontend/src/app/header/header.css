@@ -1,0 +1,18 @@
+/* ── Top Bar ── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 22px;
+  background: #f2f5f8;
+  border-bottom: 1px solid #d8d8d8;
+  flex-shrink: 0;
+}
+.top-bar-left { display: flex; align-items: center; gap: 12px; }
+.tu-logo { width: 46px; height: 46px; object-fit: contain; }
+.app-title { font-weight: 700; font-size: 18px; color: #000; white-space: nowrap; }
+.top-bar-right { display: flex; align-items: center; gap: 6px; }
+.tb-icon { width: 20px; height: 20px; object-fit: contain; }
+.weather-text { font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 16px; color: #000; margin-right: 10px; }
+.time-text { font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 16px; color: #000; }

@@ -1,0 +1,153 @@
+/* =====================================================
+   Landing / Login-Register Choice Page
+   Figma node 526-119  (LOGIN/REGISTER Page)
+   ===================================================== */
+
+:host { display: block; }
+
+/* ── Page ── */
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* ── Top Bar ── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 22px;
+  background-color: #f2f5f8;
+  border-bottom: 1px solid #d8d8d8;
+  flex-shrink: 0;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tu-logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tb-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.weather-text {
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  color: #000;
+  margin-right: 10px;
+}
+
+.time-text {
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  color: #000;
+}
+
+/* ── Page Body ── */
+.page-body {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 22px 32px;
+}
+
+/* ── Back Button ── */
+.back-btn {
+  position: absolute;
+  top: 28px;
+  left: 22px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.back-btn img {
+  width: 46px;
+  height: 46px;
+  display: block;
+}
+
+/* ── Centred Content ── */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  max-width: 480px;
+  justify-content: center;
+}
+
+/* ── Torch Logo ── */
+.torch-logo {
+  width: 190px;
+  height: 205px;
+  object-fit: contain;
+  margin-bottom: 28px;
+}
+
+/* ── Welcome Title ── */
+.welcome-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1.0;
+  color: #000000;
+  text-align: center;
+  margin: 0 0 18px 0;
+}
+
+/* ── Welcome Description ── */
+.welcome-desc {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #585858;
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Buttons Row ── */
+.btn-row {
+  max-width: 700px;
+  margin-top: 40px;
+  flex-shrink: 0;
+}
+
+/* Log In text is bright white; Register text is the page bg tint (#F2F2F2)
+   — matches the Figma fill difference between the two buttons */
+.btn-login    { color: #ffffff; }
+.btn-register { color: #f2f2f2; }

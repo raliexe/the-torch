@@ -1,0 +1,259 @@
+/* =====================================================
+   Leaderboard Page – Figma node 537-711
+   FULL TEAM MEMBERS LIST Page
+   ===================================================== */
+
+:host { display: block; }
+
+.leaderboard-page {
+  --page-pad: 22px;
+  --content-inset: 80px;
+  --content-max: 1200px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f2f2f2;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
+}
+
+/* ── Top Bar ── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 22px;
+  background: #f2f5f8;
+  border-bottom: 1px solid #d8d8d8;
+  flex-shrink: 0;
+}
+.top-bar-left { display: flex; align-items: center; gap: 12px; }
+.tu-logo { width: 46px; height: 46px; object-fit: contain; }
+.app-title { font-weight: 700; font-size: 18px; color: #000; white-space: nowrap; }
+.top-bar-right { display: flex; align-items: center; gap: 6px; }
+.tb-icon { width: 20px; height: 20px; object-fit: contain; }
+.weather-text { font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 16px; color: #000; margin-right: 10px; }
+.time-text { font-family: 'Inter', Helvetica, Arial, sans-serif; font-size: 16px; color: #000; }
+
+/* ── Sub Nav ── */
+.sub-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--page-pad) 0;
+}
+.sub-nav-right { display: flex; gap: 10px; }
+.nav-btn {
+  width: 46px; height: 46px;
+  border: none; background: transparent;
+  padding: 0; cursor: pointer; border-radius: 50%;
+}
+.nav-btn img { width: 46px; height: 46px; display: block; }
+
+/* ── Page body (centered content, profile-style) ── */
+.page-body {
+  flex: 1;
+  padding: 0 var(--content-inset) 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+}
+
+/* ── Title ── */
+.title-row {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0 0;
+  margin-bottom: 14px;
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.page-name {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1;
+  color: #000;
+  margin: 0;
+}
+
+.page-subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  color: #585858;
+  margin: 4px 0 0;
+}
+
+/* ── Content Area ── */
+.content-area {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  max-width: var(--content-max);
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  flex-shrink: 0;
+  width: 150px;
+  background: #f2f2f2;
+  border: 1px solid #8d8d8d;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(141,141,141,0.2);
+  transition: background 0.15s;
+}
+.tab:last-child { border-bottom: none; }
+
+.tab-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.tab-icon img { width: 22px; height: 22px; object-fit: contain; }
+
+.tab-labels { display: flex; flex-direction: column; }
+.tab-main { font-size: 13px; font-weight: 600; line-height: 1.2; }
+.tab-sub  { font-size: 10px; font-weight: 400; line-height: 1.2; }
+
+/* Teams tab */
+.tab-teams        { background: #f2f2f2; }
+.tab-teams .tab-icon { background: rgba(0,0,0,0.06); }
+.tab-teams .tab-main, .tab-teams .tab-sub { color: #000; }
+.tab-teams:hover { background: #eaeaea; }
+
+/* Individuals tab (active state) */
+.tab-individuals  { background: #e0e8f3; }
+.tab-individuals .tab-icon { background: rgba(15,108,177,0.15); }
+.tab-individuals .tab-main, .tab-individuals .tab-sub { color: #0f6cb1; }
+
+/* My Team tab (highlighted blue) */
+.tab-myteam       { background: #0f6cb1; }
+.tab-myteam .tab-icon { background: rgba(255,255,255,0.2); }
+.tab-myteam .tab-main, .tab-myteam .tab-sub { color: #f2f2f2; }
+
+/* ── Table Container ── */
+.table-container {
+  flex: 1;
+  min-width: 0;
+  background: #f2f2f2;
+  border: 1px solid #8d8d8d;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Table header */
+.table-header {
+  display: grid;
+  grid-template-columns: 56px 1fr 1fr 1fr;
+  padding: 0 20px;
+  height: 50px;
+  background: #f2f5f8;
+  border-bottom: 1px solid #8d8d8d;
+  border-radius: 18px 18px 0 0;
+  flex-shrink: 0;
+}
+.th {
+  display: flex; align-items: center;
+  font-weight: 700; font-size: 13px; color: #000;
+}
+.th-right { justify-content: flex-end; }
+
+/* Table rows */
+.table-body { flex: 1; overflow-y: auto; position: relative; }
+
+.table-row {
+  display: grid;
+  grid-template-columns: 56px 1fr 1fr 1fr;
+  padding: 0 20px;
+  height: 52px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  align-items: center;
+}
+.table-row:last-of-type { border-bottom: none; }
+
+.table-row--mine .td-team {
+  color: #0f6cb1;
+  font-weight: 700;
+}
+
+.td { font-size: 15px; color: #000; }
+.td-rank { font-weight: 700; text-align: center; }
+.td-team { font-weight: 400; }
+.td-dist { font-weight: 400; text-align: right; }
+.td-pts  { font-weight: 700; text-align: right; }
+
+/* Scroll indicator */
+.scroll-track {
+  position: absolute;
+  right: 6px; top: 8px; bottom: 8px;
+  width: 5px;
+  background: rgba(166,166,166,0.4);
+  border-radius: 50px;
+}
+.scroll-thumb {
+  width: 5px;
+  height: 75px;
+  background: #cfd7e4;
+  border-radius: 50px;
+  border: 1px solid #8f8c8c;
+}
+
+/* ── Bottom Info Bar ── */
+.bottom-bar {
+  margin: 14px 0 0;
+  width: 100%;
+  max-width: var(--content-max);
+  background: rgba(125,151,194,0.3);
+  border-radius: 18px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.trophy-icon { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
+.bottom-text { flex: 1; font-size: 13px; font-weight: 400; color: #3f5e98; }
+.btn-individual {
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px; font-weight: 400; color: #3f5e98;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0,0,0,0.15);
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+  transition: background 0.15s;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.btn-individual:hover { background: #f0f0f0; }
+.btn-individual img { width: 14px; height: 14px; object-fit: contain; }
+
+@media (max-width: 1100px) {
+  .leaderboard-page {
+    --content-inset: var(--page-pad);
+  }
+}
