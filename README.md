@@ -1,6 +1,6 @@
 # theTorch – TU Cycling League
 
-A web-based cycling gamification platform for TU Wien students, developed as part of the **Design Thinking & Explorative Prototyping** course (MHCC) at TU Wien. Riders cycle, earn points, compete in teams, and grow a shared **Digital Forest** that reflects real-world environmental impact.
+A web-based cycling gamification platform for students. Riders cycle, earn points, compete in teams, and grow a shared **Digital Forest** that reflects real-world environmental impact.
 
 ## Tech Stack
 
