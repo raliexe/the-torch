@@ -4,8 +4,8 @@ A web-based cycling gamification platform for students. Riders cycle, earn point
 
 ## Tech Stack
 
-Backend: Java, Spring Boot, SQLite
-Frontend: Angular, TypeScript, HTML, CSS
+- **Backend:** Java, Spring Boot, SQLite
+- **Frontend:** Angular, TypeScript, HTML, CSS
 
 ## Features
 
