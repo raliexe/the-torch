@@ -1,0 +1,14 @@
+.home-guest-login {
+  display: flex;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-top: 14px;
+  flex-shrink: 0;
+  flex: none;
+}
+
+@media (max-width: 1100px) {
+  .home-guest-login {
+    margin-top: 12px;
+  }
+}

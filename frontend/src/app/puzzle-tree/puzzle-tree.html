@@ -1,0 +1,104 @@
+<div class="page-wrapper">
+  <div class="sub-nav">
+    <button class="nav-btn" type="button" (click)="goBack()" aria-label="Back">
+      <img src="assets/images/back-button.svg" alt="Back" />
+    </button>
+    <div class="sub-nav-right">
+      <button class="nav-btn" type="button" routerLink="/profile" aria-label="Profile">
+        <img src="assets/images/profile-button.svg" alt="Profile" />
+      </button>
+      <button class="nav-btn" type="button" routerLink="/home" aria-label="Home">
+        <img src="assets/images/home-button.svg" alt="Home" />
+      </button>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="title-row">
+      <span class="page-name">Puzzle Tree</span>
+      <span class="page-subtitle">Complete the puzzle and help plant an actual tree in Vienna!</span>
+    </div>
+
+    <div class="main-grid">
+      <div class="puzzle-column">
+        <div class="puzzle-scene" aria-label="Puzzle tree in the digital forest">
+          <div
+            class="puzzle-scene-bg"
+            style="background-image: url('assets/images/puzzle-tree-scene-bg.png')"
+            aria-hidden="true"
+          ></div>
+          <div class="puzzle-tree-frame">
+            <img
+              class="puzzle-tree-base"
+              src="assets/images/puzzle-tree-82-2c17f1.png"
+              alt="Puzzle tree"
+            />
+            <div class="puzzle-grid">
+              @for (piece of pieces; track piece.id) {
+                @if (piece.unlocked) {
+                  <div
+                    class="piece-cell piece-cell--revealed"
+                    [style.grid-area]="pieceGridArea(piece.id)"
+                  ></div>
+                } @else {
+                  <button
+                    type="button"
+                    class="piece-cell piece-cell--locked"
+                    [style.grid-area]="pieceGridArea(piece.id)"
+                    [attr.aria-label]="'Unlock puzzle piece ' + piece.id"
+                    (click)="unlockPiece(piece)"
+                  >
+                    <span class="piece-shadow" aria-hidden="true"></span>
+                  </button>
+                }
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="card progress-card">
+          <h2 class="section-title">Team Progress</h2>
+          <div class="progress-gauge">
+            <div class="progress-ring" [style.background]="progressRingStyle">
+              <div class="progress-inner">
+                <span class="gauge-label">Today</span>
+                <span class="gauge-value">{{ todayPoints }}</span>
+                <span class="gauge-unit">pts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rewards-card">
+          <h2 class="section-title">Next Rewards</h2>
+          <div class="reward-content">
+            <div class="reward-row">
+              <div class="reward-coin-wrap">
+                <span class="reward-coin-ring"></span>
+                <img src="assets/images/reward-coin.svg" alt="" class="reward-coin" />
+              </div>
+              <div class="reward-text">
+                <span class="reward-points">+{{ rewardPoints }} Pts</span>
+                <span class="reward-desc">Complete the puzzle</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card info-bar">
+      <img src="assets/images/icon-puzzle.svg" alt="" class="info-icon" />
+      <div class="info-text">
+        <strong>How it works?</strong>
+        <p>Each piece represents a milestone. Complete the puzzle to unlock bonus points for your team.</p>
+      </div>
+      <button type="button" class="milestones-btn">
+        View Milestones
+        <img src="assets/images/icon-arrow-inverted.svg" alt="" class="btn-arrow" />
+      </button>
+    </div>
+  </div>
+</div>

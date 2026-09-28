@@ -1,0 +1,94 @@
+<div class="leaderboard-page">
+  <!-- ── Sub-Navigation ── -->
+  <div class="sub-nav">
+    <button class="nav-btn" (click)="goBack()" aria-label="Back">
+      <img src="assets/images/back-button.svg" alt="Back" />
+    </button>
+    <div class="sub-nav-right">
+      <button class="nav-btn" routerLink="/profile" aria-label="Profile">
+        <img src="assets/images/profile-button.svg" alt="Profile" />
+      </button>
+      <button class="nav-btn" routerLink="/home" aria-label="Home">
+        <img src="assets/images/home-button.svg" alt="Home" />
+      </button>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <!-- ── Title ── -->
+    <div class="title-row">
+      <h1 class="page-name">Leaderboard</h1>
+      <p class="page-subtitle">All teams ranked by total points</p>
+    </div>
+
+    <!-- ── Content Area ── -->
+    <div class="content-area">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="tab tab-teams" routerLink="/leaderboard">
+        <div class="tab-icon">
+          <img src="assets/images/icon-teams.svg" alt="Teams" />
+        </div>
+        <div class="tab-labels">
+          <span class="tab-main">Teams</span>
+          <span class="tab-sub">All Teams</span>
+        </div>
+      </div>
+      <div class="tab tab-individuals" routerLink="/individuals">
+        <div class="tab-icon">
+          <img src="assets/images/icon-individuals.svg" alt="Individuals" />
+        </div>
+        <div class="tab-labels">
+          <span class="tab-main">Individuals</span>
+          <span class="tab-sub">All Riders</span>
+        </div>
+      </div>
+      <div class="tab tab-myteam" routerLink="/team">
+        <div class="tab-icon">
+          <img src="assets/images/icon-myteam.svg" alt="My Team"/>
+        </div>
+        <div class="tab-labels">
+          <span class="tab-main">My Team</span>
+          <span class="tab-sub">{{ myTeamName }}</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Table -->
+    <div class="table-container">
+      <div class="table-header">
+        <span class="th">Rank</span>
+        <span class="th">Team</span>
+        <span class="th th-right">Total Distance</span>
+        <span class="th th-right">Total Points</span>
+      </div>
+      <div class="table-body">
+        @for (team of displayTeams; track team.name; let i = $index) {
+        <div class="table-row" [class.table-row--mine]="isMyTeam(team.name)">
+          <span class="td td-rank">{{ i + 1 }}</span>
+          <span class="td td-team">{{ team.name }}</span>
+          <span class="td td-dist">{{ team.distanceKm }} km</span>
+          <span class="td td-pts">{{ team.points }} pts</span>
+        </div>
+        }
+        <div class="scroll-track">
+          <div class="scroll-thumb"></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- ── Bottom Info Bar ── -->
+    <div class="bottom-bar">
+      <img class="trophy-icon" src="assets/images/icon-trophy.svg" alt="Trophy" />
+      <span class="bottom-text">Ranking updates in real time. Keep cycling!</span>
+      <button class="btn-individual">
+        View Individual Leaderboard
+        <img src="assets/images/icon-arrow.svg" alt="→" />
+      </button>
+    </div>
+  </div>
+
+</div>

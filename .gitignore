@@ -1,0 +1,17 @@
+# IDE settings
+.idea/
+*.iml
+.vscode/
+
+# Local databases (contain local test data)
+/torchdb.db
+
+# Local Docker setup (not part of the prototype)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db

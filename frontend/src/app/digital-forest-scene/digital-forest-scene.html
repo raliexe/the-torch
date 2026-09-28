@@ -1,0 +1,93 @@
+<section
+  class="df-scene"
+  [class.df-scene--embedded]="embedded"
+  aria-label="Team forest carousel"
+  (touchstart)="onSceneTouchStart($event)"
+  (touchend)="onSceneTouchEnd($event)"
+>
+  <img class="df-scene-bg" src="assets/images/digital-forest-bg.png" alt="" draggable="false" />
+
+  <div class="df-rank-track-row">
+    <button
+      type="button"
+      class="df-arrow df-arrow--left"
+      (click)="prevTeam()"
+      [disabled]="isGliding"
+      aria-label="Previous team"
+    >
+      <img src="assets/images/digital-forest-arrow-left.svg" alt="" />
+    </button>
+
+    <div
+      class="df-rank-track df-rank-track--segmented"
+      role="progressbar"
+      [attr.aria-valuenow]="carouselIndex + 1"
+      aria-valuemin="1"
+      [attr.aria-valuemax]="carouselCardCount"
+      aria-label="Carousel position"
+    >
+      @for (team of forestTeams; track team.name; let i = $index) {
+      <div
+        class="df-rank-segment"
+        [class.df-rank-segment--passed]="i < carouselIndex"
+        [class.df-rank-segment--active]="i === carouselIndex"
+      ></div>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="df-arrow df-arrow--right"
+      (click)="nextTeam()"
+      [disabled]="isGliding"
+      aria-label="Next team"
+    >
+      <img src="assets/images/digital-forest-arrow-right.svg" alt="" />
+    </button>
+  </div>
+
+  <div
+    #carousel
+    class="df-carousel"
+    [class.df-carousel--no-transition]="!transitionEnabled"
+    [class.df-carousel--glide-left]="animState === 'glide-left'"
+    [class.df-carousel--glide-right]="animState === 'glide-right'"
+  >
+    <div class="df-carousel-slot df-carousel-slot--pos-left">
+      <app-digital-forest-tree-card
+        [teamName]="toCardData(previousTeam).teamName"
+        [points]="toCardData(previousTeam).points"
+        [puzzleProgress]="toCardData(previousTeam).puzzleProgress"
+        variant="side"
+      />
+    </div>
+
+    <div
+      class="df-carousel-slot df-carousel-slot--pos-center"
+      (transitionend)="onGlideTransitionEnd($event)"
+    >
+      <app-digital-forest-tree-card
+        [teamName]="toCardData(activeTeam).teamName"
+        [points]="toCardData(activeTeam).points"
+        [puzzleProgress]="toCardData(activeTeam).puzzleProgress"
+        variant="active"
+      />
+    </div>
+
+    <div class="df-carousel-slot df-carousel-slot--pos-right">
+      <app-digital-forest-tree-card
+        [teamName]="toCardData(nextTeamRow).teamName"
+        [points]="toCardData(nextTeamRow).points"
+        [puzzleProgress]="toCardData(nextTeamRow).puzzleProgress"
+        variant="side"
+      />
+    </div>
+  </div>
+
+  <div class="df-rank-text">
+    @if (activeTeam) {
+    <p class="df-rank-team">{{ activeTeam.name }}</p>
+    <p class="df-rank-label">Rank: {{ formatRank(activeRank) }}.</p>
+    }
+  </div>
+</section>

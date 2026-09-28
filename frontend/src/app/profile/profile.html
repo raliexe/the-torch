@@ -1,0 +1,134 @@
+<div class="page-wrapper">
+  <!-- Sub-navigation -->
+  <div class="sub-nav">
+    <button class="nav-btn" (click)="goBack()" aria-label="Back">
+      <img src="assets/images/back-button.svg" alt="Back" />
+    </button>
+    <div class="sub-nav-right">
+      <button class="nav-btn" routerLink="/home" aria-label="Home">
+        <img src="assets/images/home-button.svg" alt="Home" />
+      </button>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <!-- Title -->
+    <div class="title-row">
+      <span class="page-name">Individual Record</span>
+      <span class="page-subtitle">Your cycling journey</span>
+    </div>
+
+    <!-- Main 2-column layout -->
+    <div class="main-grid">
+      <!-- Left column -->
+      <div class="left-column">
+        <div class="card account-card">
+          <img src="assets/images/profile-avatar.png" alt="Profile" class="avatar" />
+          <div class="account-info">
+            <span class="account-name">{{ currRider.name }}</span>
+            <span class="account-meta">ID: 16453****</span>
+            <span class="account-meta">{{ myTeam.teamName }}</span>
+          </div>
+        </div>
+
+        <div class="card stats-card">
+          <div class="stats-top">
+            <div class="stats-block">
+              <span class="stats-label">Total Points</span>
+              <span class="stats-big">1,250<span class="stats-unit">pts</span></span>
+              <div class="progress-track">
+                <div class="progress-fill" [style.width.%]="teamProgressPercent"></div>
+              </div>
+            </div>
+            <div class="stats-block stats-block-right">
+              <span class="stats-label">Rank</span>
+              <span class="stats-big">#2</span>
+              <span class="stats-team">in {{ myTeam.teamName }}</span>
+            </div>
+          </div>
+          <div class="stats-bottom">
+            <div class="stats-meta">
+              <span>Member since</span>
+              <strong>Oct 2025</strong>
+            </div>
+            <div class="stats-meta stats-meta-right">
+              <span>Status</span>
+              <strong class="status-active"><span class="status-dot"></span> Active</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card achievements-card">
+          <h2 class="section-title">Achievements</h2>
+          <div class="achievements-list">
+            <img src="assets/images/achievement-1.svg" alt="Achievement 1" />
+            <img src="assets/images/achievement-2.svg" alt="Achievement 2" />
+            <img src="assets/images/achievement-3.svg" alt="Achievement 3" />
+          </div>
+        </div>
+
+        <button class="logout-btn" type="button" (click)="logOut()">Log out</button>
+      </div>
+
+      <!-- Right column -->
+      <div class="right-column">
+        <div class="score-cards">
+          <div class="card score-card">
+            <span class="score-label">Today</span>
+            <div class="score-value">
+              <span class="score-number">60</span>
+              <span class="score-unit">pts</span>
+            </div>
+          </div>
+          <div class="card score-card">
+            <span class="score-label">This Week</span>
+            <div class="score-value">
+              <span class="score-number">264</span>
+              <span class="score-unit">pts</span>
+            </div>
+          </div>
+          <div class="card score-card">
+            <span class="score-label">Total</span>
+            <div class="score-value">
+              <span class="score-number">3,850</span>
+              <span class="score-unit">pts</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card progress-card">
+          <h2 class="section-title">Your Progress</h2>
+          <div class="chart-area">
+            <div class="chart-y-axis"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div>
+            <div class="chart-main">
+              <div class="chart-plot">
+                <div class="chart-grid"><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div><div class="grid-line grid-line-solid"></div></div>
+                <div class="chart-bars">
+                  <div class="bar-group"><div class="bar-stack"><span class="bar-value">40</span><div class="bar" style="height:40%"></div></div></div>
+                  <div class="bar-group"><div class="bar-stack"><span class="bar-value">55</span><div class="bar" style="height:55%"></div></div></div>
+                  <div class="bar-group"><div class="bar-stack"><span class="bar-value">38</span><div class="bar" style="height:38%"></div></div></div>
+                  <div class="bar-group"><div class="bar-stack"><span class="bar-value">62</span><div class="bar" style="height:62%"></div></div></div>
+                  <div class="bar-group"><div class="bar-stack"><span class="bar-value">43</span><div class="bar" style="height:43%"></div></div></div>
+                  <div class="bar-group"><div class="bar-stack"><span class="bar-value">15</span><div class="bar" style="height:15%"></div></div></div>
+                  <div class="bar-group"><div class="bar-stack"><span class="bar-value">11</span><div class="bar" style="height:11%"></div></div></div>
+                </div>
+              </div>
+              <div class="chart-x-labels">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+              </div>
+            </div>
+          </div>
+          <div class="distance-card">
+            <img src="assets/images/icon-bike.svg" alt="Bike" class="bike-icon" />
+            <div class="distance-text">
+              <strong>Total Distance</strong>
+              <span>All Time</span>
+            </div>
+            <span class="distance-value">1,245<span class="distance-unit">km</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

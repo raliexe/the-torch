@@ -1,0 +1,85 @@
+<div class="register-page">
+  <!-- ── Page Body ── -->
+  <div class="page-body">
+
+    <!-- Back Button -->
+    <button type="button" class="nav-btn back-btn" aria-label="Go back" (click)="goBack()">
+      <img src="/assets/images/back-button.svg" alt="Back" />
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Title -->
+      <div class="page-title">
+        <h1 class="title-main">Create your account</h1>
+        <p class="title-sub">Join theTorch community</p>
+      </div>
+
+      <!-- Form -->
+      <form class="register-form" (ngSubmit)="onRegister(registerForm)" #registerForm="ngForm">
+
+        <div class="form-field">
+          <label class="field-label" for="studentMail">Student Mail</label>
+          <input
+            id="studentMail"
+            class="field-input"
+            type="email"
+            placeholder="Enter your student mail"
+            name="studentMail"
+            ngModel
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="createPassword">Create Password</label>
+          <input
+            id="createPassword"
+            class="field-input"
+            type="password"
+            placeholder="Enter your new password"
+            name="createPassword"
+            ngModel
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="repeatPassword">Repeat Password</label>
+          <input
+            id="repeatPassword"
+            class="field-input"
+            type="password"
+            placeholder="Repeat your new password"
+            name="repeatPassword"
+            ngModel
+            required
+          />
+        </div>
+
+        @if (errorMessage) {
+          <p class="form-error">{{ errorMessage }}</p>
+        }
+
+        <button type="submit" class="register-btn" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Registering…' : 'Register' }}
+        </button>
+
+        <p class="login-link">
+          Already have an account?
+          <a class="login-anchor" routerLink="/login">Log In</a>
+        </p>
+
+      </form>
+
+    </main>
+
+    <!-- Home Button -->
+    <button class="nav-btn home-btn" aria-label="Go home" routerLink="/home">
+      <img src="/assets/images/home-button.svg" alt="Home" />
+    </button>
+
+  </div>
+
+</div>

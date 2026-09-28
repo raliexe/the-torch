@@ -1,0 +1,77 @@
+<div class="page-wrapper">
+  <div class="sub-nav">
+    <button class="nav-btn" type="button" (click)="goBack()" aria-label="Back">
+      <img src="assets/images/back-button.svg" alt="Back" />
+    </button>
+    <div class="sub-nav-right">
+      <button class="nav-btn" type="button" routerLink="/profile" aria-label="Profile">
+        <img src="assets/images/profile-button.svg" alt="Profile" />
+      </button>
+      <button class="nav-btn" type="button" routerLink="/home" aria-label="Home">
+        <img src="assets/images/home-button.svg" alt="Home" />
+      </button>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="title-row">
+      <span class="page-name">Join or Create a Team</span>
+      <span class="page-subtitle">Ride together, win together</span>
+    </div>
+
+    <div class="option-cards">
+      <button
+        type="button"
+        class="option-card"
+        [class.option-card--selected]="mode === 'join'"
+        (click)="selectMode('join')"
+        [attr.aria-pressed]="mode === 'join'"
+      >
+        <img class="option-icon" src="assets/images/icon-join-team.svg" alt="" />
+        <span class="option-title">Join Team</span>
+        <p class="option-desc">
+          Enter a team code to join an existing team.
+        </p>
+      </button>
+
+      <button
+        type="button"
+        class="option-card"
+        [class.option-card--selected]="mode === 'create'"
+        (click)="selectMode('create')"
+        [attr.aria-pressed]="mode === 'create'"
+      >
+        <img class="option-icon" src="assets/images/icon-create-team.svg" alt="" />
+        <span class="option-title">Create Team</span>
+        <p class="option-desc">Create your own team and invite your friends.</p>
+      </button>
+    </div>
+
+    <div class="code-box">
+      <span class="code-box-label">{{ mode === 'create' ? 'Team Name' : 'Team Code' }}</span>
+      <form (ngSubmit)="submit()">
+        <div class="code-input-row">
+          <input
+            type="text"
+            class="code-input"
+            [placeholder]="mode === 'create' ? 'Enter your team name' : 'Enter team code'"
+            [(ngModel)]="teamCode"
+            name="teamCode"
+          />
+          <button type="submit" class="action-btn" [disabled]="isSubmitting">
+            {{
+              isSubmitting && mode === 'create'
+                ? 'Creating…'
+                : mode === 'join'
+                  ? 'Join'
+                  : 'Create'
+            }}
+          </button>
+        </div>
+        @if (errorMessage) {
+          <p class="form-error">{{ errorMessage }}</p>
+        }
+      </form>
+    </div>
+  </div>
+</div>
